@@ -137,18 +137,12 @@
                     <plugin>
                         <groupId>de.eleon</groupId>
                         <artifactId>report2image</artifactId>
-                        <version>${project.version}</version>
+                        <version>1.0</version>
                         <executions>
                             <execution>
                                 <phase>package</phase>
                                 <goals>
                                     <goal>report2image</goal>
-                                </goals>
-                            </execution>
-                            <execution>
-                                <id>mojo-descriptor</id>
-                                <goals>
-                                    <goal>descriptor</goal>
                                 </goals>
                             </execution>
                         </executions>
@@ -159,7 +153,6 @@
                                     <image>target/jacoco.png</image>
                                 </report>
                             </reports>
-                            <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
                         </configuration>
                     </plugin>
                 </plugins>
