@@ -1,4 +1,4 @@
-# Rport2Image
+# Report2Image
 
 Report2Image is a maven plugin to convert a html report into a single image. It can be used to display the reported test coverage at drone.io, for example.
 
