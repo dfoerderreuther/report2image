@@ -164,10 +164,7 @@
 
     <repositories>
         <repository>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>central</id>
+            <id>bintray</id>
             <name>bintray</name>
             <url>http://dl.bintray.com/dfoerderreuther/maven</url>
         </repository>
