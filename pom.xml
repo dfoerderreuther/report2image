@@ -145,6 +145,12 @@
                                     <goal>report2image</goal>
                                 </goals>
                             </execution>
+                            <execution>
+                                <id>mojo-descriptor</id>
+                                <goals>
+                                    <goal>descriptor</goal>
+                                </goals>
+                            </execution>
                         </executions>
                         <configuration>
                             <reports>
