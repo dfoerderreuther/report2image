@@ -4,6 +4,8 @@ Report2Image is a maven plugin to convert a html report into a single image. It 
 
 ## Example usage in pom.xml with jacoco
 
+The following pom settings create a jacoco coverage report and converts the index-page of the report into a png.
+
 ### Jacoco configuration
             
     <plugin>
