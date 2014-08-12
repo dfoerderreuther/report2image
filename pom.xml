@@ -137,7 +137,7 @@
                     <plugin>
                         <groupId>de.eleon</groupId>
                         <artifactId>report2image</artifactId>
-                        <version>1.0</version>
+                        <version>1.2</version>
                         <executions>
                             <execution>
                                 <phase>package</phase>
@@ -160,16 +160,6 @@
         </profile>
 
     </profiles>
-
-
-    <repositories>
-        <repository>
-            <id>bintray</id>
-            <name>bintray</name>
-            <url>http://dl.bintray.com/dfoerderreuther/maven</url>
-        </repository>
-    </repositories>
-
 
     <dependencies>
 
