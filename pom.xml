@@ -6,7 +6,7 @@
 
     <groupId>de.eleon</groupId>
     <artifactId>report2image</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>maven-plugin</packaging>
     <name>Report2Image</name>
     <description>Maven plugin for converting html reports into a single image file</description>
@@ -32,9 +32,9 @@
 
     <distributionManagement>
         <repository>
-            <id>bintray-dfoerderreuther-report2image-report2image</id>
-            <name>dfoerderreuther-report2image-report2image</name>
-            <url>https://api.bintray.com/maven/dfoerderreuther/report2image/report2image</url>
+            <id>bintray-dfoerderreuther-maven-report2image</id>
+            <name>dfoerderreuther-maven-report2image</name>
+            <url>https://api.bintray.com/maven/dfoerderreuther/maven/report2image</url>
         </repository>
     </distributionManagement>
 
