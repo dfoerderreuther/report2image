@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ConsoleReaderWrapper.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">console-builder</a> &gt; <a href="index.source.html" class="el_package">de.eleon.console.builder</a> &gt; <span class="el_source">ConsoleReaderWrapper.java</span></div><h1>ConsoleReaderWrapper.java</h1><pre class="source lang-java linenums">/*
+* Copyright 2014 Dominik Foerderreuther &lt;dominik@eleon.de&gt;
+*
+* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+package de.eleon.console.builder;
+
+import com.google.common.collect.Iterables;
+import jline.console.ConsoleReader;
+import jline.console.completer.AggregateCompleter;
+import jline.console.completer.Completer;
+import jline.console.history.FileHistory;
+import jline.console.history.MemoryHistory;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Collection;
+import java.util.List;
+
+/**
+ * ConsoleReaderWrapper is a Wrapper around ConsoleReader. It capsules IOExceptions into Runtime Exceptions and facilitate usage of history. ConsoleReaderWrapper is a singleton.
+ */
+class ConsoleReaderWrapper {
+
+    private FileHistory history;
+    private ConsoleReader consoleReader;
+
+<span class="fc" id="L40">    public ConsoleReaderWrapper() {</span>
+        try {
+<span class="fc" id="L42">            this.consoleReader = ConsoleReaderFactory.get();</span>
+<span class="nc" id="L43">        } catch (IOException e) {</span>
+<span class="nc" id="L44">            throw new IllegalStateException(&quot;Can't create console&quot;, e);</span>
+<span class="fc" id="L45">        }</span>
+<span class="fc" id="L46">        this.init();</span>
+<span class="fc" id="L47">    }</span>
+
+    void init() {
+<span class="fc" id="L50">        consoleReader.setPrompt(&quot;&gt; &quot;);</span>
+<span class="fc" id="L51">    }</span>
+
+    void enableHistoryFrom(String file) {
+        try {
+<span class="nc" id="L55">            Path directory = Paths.get(System.getProperty(&quot;user.home&quot;), &quot;.jline&quot;);</span>
+<span class="nc" id="L56">            Path historyFile = Paths.get(directory.toString(), file);</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">            if (!directory.toFile().exists()) {</span>
+<span class="nc" id="L58">                Files.createDirectories(directory);</span>
+            }
+<span class="nc bnc" id="L60" title="All 2 branches missed.">            if (!historyFile.toFile().exists()) {</span>
+<span class="nc" id="L61">                Files.createFile(historyFile);</span>
+            }
+<span class="nc" id="L63">            history = new FileHistory(historyFile.toFile());</span>
+<span class="nc" id="L64">            consoleReader.setHistory(history);</span>
+<span class="nc" id="L65">            consoleReader.setHistoryEnabled(true);</span>
+<span class="nc" id="L66">        } catch (IOException e) {</span>
+<span class="nc" id="L67">            throw new IllegalStateException(&quot;Can't create history file&quot;, e);</span>
+<span class="nc" id="L68">        }</span>
+<span class="nc" id="L69">    }</span>
+
+    void disableHistory() {
+<span class="fc" id="L72">        consoleReader.setHistory(new MemoryHistory());</span>
+<span class="fc" id="L73">        consoleReader.setHistoryEnabled(false);</span>
+<span class="fc" id="L74">    }</span>
+
+    /**
+     * Get JLine ConsoleReader
+     *
+     * @return ConsoleReader
+     */
+    public ConsoleReader getConsoleReader() {
+<span class="nc" id="L82">        return consoleReader;</span>
+    }
+
+    /**
+     * Set JLine ConsoleReader
+     *
+     * @param consoleReader the ConsoleReader
+     */
+    public void setConsoleReader(ConsoleReader consoleReader) {
+<span class="nc" id="L91">        this.consoleReader = consoleReader;</span>
+<span class="nc" id="L92">    }</span>
+
+    /**
+     * Print charSequence to console
+     *
+     * @param charSequence to print
+     */
+    public void print(CharSequence charSequence) {
+        try {
+<span class="fc" id="L101">            consoleReader.println(charSequence);</span>
+<span class="fc" id="L102">            consoleReader.flush();</span>
+<span class="nc" id="L103">        } catch (IOException e) {</span>
+<span class="nc" id="L104">            throw new IllegalStateException(&quot;Can't write to console&quot;, e);</span>
+<span class="fc" id="L105">        }</span>
+<span class="fc" id="L106">    }</span>
+
+    /**
+     * Print columns to console
+     *
+     * @param columns Collection of CharSequences to print
+     */
+    public void print(Collection&lt;? extends CharSequence&gt; columns) {
+        try {
+<span class="fc" id="L115">            consoleReader.printColumns(columns);</span>
+<span class="fc" id="L116">            consoleReader.flush();</span>
+<span class="nc" id="L117">        } catch (IOException e) {</span>
+<span class="nc" id="L118">            throw new IllegalStateException(&quot;Can't write columns to console&quot;, e);</span>
+<span class="fc" id="L119">        }</span>
+<span class="fc" id="L120">    }</span>
+
+    /**
+     * Remove all completers and add the new ones. If completers contains more then one element create an AggregateCompleter with the completers and add it.
+     *
+     * @param completers to add
+     */
+    public void setCompleters(List&lt;Completer&gt; completers) {
+<span class="pc bpc" id="L128" title="1 of 2 branches missed.">        for (Completer completer : consoleReader.getCompleters()) {</span>
+<span class="nc" id="L129">            consoleReader.removeCompleter(completer);</span>
+<span class="nc" id="L130">        }</span>
+<span class="pc bpc" id="L131" title="1 of 2 branches missed.">        if (Iterables.size(completers) &gt; 1) {</span>
+<span class="nc" id="L132">            Completer completer = new AggregateCompleter(completers);</span>
+<span class="nc" id="L133">            consoleReader.addCompleter(completer);</span>
+        }
+<span class="fc bfc" id="L135" title="All 2 branches covered.">        for (Completer completer : completers) {</span>
+<span class="fc" id="L136">            consoleReader.addCompleter(completer);</span>
+<span class="fc" id="L137">        }</span>
+<span class="fc" id="L138">    }</span>
+
+    /**
+     * Get User input
+     *
+     * @return the user input
+     */
+    public String getInput() {
+        try {
+<span class="fc" id="L147">            String ret = consoleReader.readLine();</span>
+<span class="fc bfc" id="L148" title="All 2 branches covered.">            if (ret != null) {</span>
+<span class="fc" id="L149">                ret = ret.trim();</span>
+            }
+<span class="pc bpc" id="L151" title="3 of 8 branches missed.">            if (ret != null &amp;&amp; !ret.isEmpty() &amp;&amp; consoleReader.isHistoryEnabled() &amp;&amp; history != null) {</span>
+<span class="nc" id="L152">                history.add(ret);</span>
+<span class="nc" id="L153">                history.flush();</span>
+            }
+<span class="fc" id="L155">            return ret;</span>
+<span class="nc" id="L156">        } catch (IOException e) {</span>
+<span class="nc" id="L157">            throw new IllegalStateException(&quot;Can't read from console&quot;, e);</span>
+        }
+    }
+
+    /**
+     * Make beep sound if supported.
+     *
+     */
+    public void beep() {
+        try {
+<span class="fc" id="L167">            consoleReader.beep();</span>
+<span class="nc" id="L168">        } catch (IOException e) {</span>
+<span class="nc" id="L169">            throw new IllegalStateException(&quot;Can't write to console&quot;, e);</span>
+<span class="fc" id="L170">        }</span>
+<span class="fc" id="L171">    }</span>
+
+
+    public void close() {
+<span class="fc" id="L175">        consoleReader.shutdown();</span>
+<span class="fc" id="L176">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

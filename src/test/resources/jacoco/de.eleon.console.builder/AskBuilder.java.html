@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>AskBuilder.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">console-builder</a> &gt; <a href="index.source.html" class="el_package">de.eleon.console.builder</a> &gt; <span class="el_source">AskBuilder.java</span></div><h1>AskBuilder.java</h1><pre class="source lang-java linenums">/*
+* Copyright 2014 Dominik Foerderreuther &lt;dominik@eleon.de&gt;
+*
+* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+package de.eleon.console.builder;
+
+import com.google.common.base.Function;
+import com.google.common.base.Optional;
+import com.google.common.base.Predicate;
+import com.google.common.collect.FluentIterable;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import de.eleon.console.builder.functional.Validator;
+import jline.console.completer.Completer;
+import jline.console.completer.EnumCompleter;
+
+import java.util.List;
+
+import static de.eleon.console.builder.functional.Transformers.toEnum;
+import static de.eleon.console.builder.functional.Validators.enumValidator;
+import static de.eleon.console.builder.functional.Validators.functionValidator;
+
+/**
+ * Ask is a builder for a single Question console.
+ *
+ */
+public class AskBuilder {
+
+    private final String question;
+<span class="fc" id="L41">    private final List&lt;Validator&gt; validators = Lists.newArrayList();</span>
+<span class="fc" id="L42">    private final List&lt;Completer&gt; completers = Lists.newArrayList();</span>
+<span class="fc" id="L43">    private Optional&lt;String&gt; history = Optional.absent();</span>
+<span class="fc" id="L44">    private boolean optional = false;</span>
+
+    static AskBuilder ask(String question) {
+<span class="fc" id="L47">        return new AskBuilder(question);</span>
+    }
+
+<span class="fc" id="L50">    private AskBuilder(String question) {</span>
+<span class="fc" id="L51">        this.question = question;</span>
+<span class="fc" id="L52">    }</span>
+
+    /**
+     * Add validator to validate answer before returning
+     *
+     * @param validator Validator to add
+     * @return the builder instance
+     */
+    public AskBuilder validateWith(Validator validator) {
+<span class="fc" id="L61">        this.validators.add(validator);</span>
+<span class="fc" id="L62">        return this;</span>
+    }
+
+    /**
+     * Add completer for tab completion
+     *
+     * @param completer {@see Completer} to add
+     * @return the builder instance
+     */
+    public AskBuilder completeWith(Completer completer) {
+<span class="fc" id="L72">        this.completers.add(completer);</span>
+<span class="fc" id="L73">        return this;</span>
+    }
+
+    /**
+     * Enable usage of history. History will be saved to ~/.jline/history
+     *
+     * @return the builder instance
+     */
+    public AskBuilder useHistory() {
+<span class="nc" id="L82">        this.history = Optional.of(&quot;history&quot;);</span>
+<span class="nc" id="L83">        return this;</span>
+    }
+
+    /**
+     * Enable usage of history of specific file. History will be saved to ~/.jline/{@param file}
+     *
+     * @param file Filename as String
+     * @return the builder instance
+     */
+    public AskBuilder useHistoryFrom(String file) {
+<span class="nc" id="L93">        this.history = Optional.of(file);</span>
+<span class="nc" id="L94">        return this;</span>
+    }
+
+    /**
+     * Disable validation of empty user inputs
+     *
+     * @return the builder instance
+     */
+    public AnswerOptional optional() {
+<span class="fc" id="L103">        this.optional = true;</span>
+<span class="fc" id="L104">        return new AnswerOptional(this);</span>
+    }
+
+    /**
+     * Return user input
+     *
+     * @return user input as String
+     */
+    public String answer() {
+<span class="fc" id="L113">        return initConsoleAndGetAnswer();</span>
+    }
+
+    /**
+     * Return user input as T
+     *
+     * @param function {@link Function} or {@link de.eleon.console.builder.functional.Transformer} for value conversion
+     * @param &lt;T&gt; the return type
+     * @return user input as T
+     */
+    public &lt;T&gt; T answer(Function&lt;String, T&gt; function) {
+<span class="fc" id="L124">        return answer(function, &quot;unknown value&quot;);</span>
+    }
+
+    /**
+     * Return user input as T
+     *
+     * @param function {@link Function} or {@link de.eleon.console.builder.functional.Transformer} for value conversion
+     * @param validationErrorMessage error message if function conversion fails
+     * @param &lt;T&gt; the return type
+     * @return user input as T
+     */
+    public &lt;T&gt; T answer(Function&lt;String, T&gt; function, final String validationErrorMessage) {
+<span class="fc" id="L136">        validateWith(functionValidator(function, validationErrorMessage));</span>
+<span class="fc" id="L137">        return function.apply(answer());</span>
+    }
+
+    /**
+     * Return user input as T extends Enum&lt;T&gt;. Complete with enum values.
+     *
+     * @param enumClass Class of enum to return
+     * @param &lt;T&gt; the return type
+     * @return user input as enum value
+     */
+    public &lt;T extends Enum&lt;T&gt;&gt; T answer(final Class&lt;T&gt; enumClass) {
+<span class="fc" id="L148">        return answer(enumClass, &quot;unknown value&quot;);</span>
+    }
+
+    /**
+     * Return user input as T extends Enum&lt;T&gt;. Complete with enum values.
+     *
+     * @param enumClass Class of enum to return
+     * @param validationErrorMessage error message if enum conversion fails
+     * @param &lt;T&gt; the return type
+     * @return user input as enum value
+     */
+    public &lt;T extends Enum&lt;T&gt;&gt; T answer(final Class&lt;T&gt; enumClass, final String validationErrorMessage) {
+<span class="fc" id="L160">        validateWith(enumValidator(enumClass, validationErrorMessage));</span>
+<span class="fc" id="L161">        completeWith(new EnumCompleter(enumClass));</span>
+<span class="fc" id="L162">        return toEnum(enumClass).apply(answer());</span>
+    }
+
+    /**
+     * Initialize console and get user input as answer
+     *
+     * @return user input as String
+     */
+    private String initConsoleAndGetAnswer() {
+
+<span class="fc" id="L172">        ConsoleReaderWrapper consoleReaderWrapper = initConsole();</span>
+
+<span class="fc" id="L174">        String input = &quot;&quot;;</span>
+<span class="fc" id="L175">        boolean valid = false;</span>
+
+<span class="fc bfc" id="L177" title="All 2 branches covered.">        while (!valid) {</span>
+<span class="fc" id="L178">            input = consoleReaderWrapper.getInput();</span>
+<span class="fc" id="L179">            valid = validate(consoleReaderWrapper, input);</span>
+<span class="fc bfc" id="L180" title="All 2 branches covered.">            if (!valid) {</span>
+<span class="fc" id="L181">                consoleReaderWrapper.print(&quot;&quot;);</span>
+<span class="fc" id="L182">                consoleReaderWrapper.print(question);</span>
+            }
+        }
+
+<span class="fc" id="L186">        consoleReaderWrapper.close();</span>
+<span class="fc" id="L187">        return input;</span>
+    }
+
+    /**
+     * Initialize Console, write question, add completers and enable / disable history
+     *
+     * @return Console instance
+     */
+    private ConsoleReaderWrapper initConsole() {
+<span class="fc" id="L196">        ConsoleReaderWrapper consoleReaderWrapper = new ConsoleReaderWrapper();</span>
+<span class="fc" id="L197">        consoleReaderWrapper.print(&quot;&quot;);</span>
+<span class="fc" id="L198">        consoleReaderWrapper.print(question);</span>
+<span class="fc" id="L199">        consoleReaderWrapper.setCompleters(completers);</span>
+<span class="pc bpc" id="L200" title="1 of 2 branches missed.">        if (history.isPresent()) {</span>
+<span class="nc" id="L201">            consoleReaderWrapper.enableHistoryFrom(history.get());</span>
+        } else {
+<span class="fc" id="L203">            consoleReaderWrapper.disableHistory();</span>
+        }
+<span class="fc" id="L205">        return consoleReaderWrapper;</span>
+    }
+
+    /**
+     * Validate user input with available validators
+     *
+     * @param consoleReaderWrapper Console to print errir messages
+     * @param input User input as String
+     * @return boolean of validation result. valid == true
+     */
+    private boolean validate(ConsoleReaderWrapper consoleReaderWrapper, String input) {
+<span class="fc" id="L216">        Iterable&lt;String&gt; errors = validate(input);</span>
+<span class="fc bfc" id="L217" title="All 2 branches covered.">        if (!Iterables.isEmpty(errors)) {</span>
+<span class="fc" id="L218">            consoleReaderWrapper.beep();</span>
+<span class="fc bfc" id="L219" title="All 2 branches covered.">            for (String error : errors) {</span>
+<span class="fc" id="L220">                consoleReaderWrapper.print(error);</span>
+<span class="fc" id="L221">            }</span>
+<span class="fc" id="L222">            return false;</span>
+        } else {
+<span class="fc" id="L224">            return true;</span>
+        }
+    }
+
+    /**
+     * Validate user input with list of {@see Validator} and collect error messages if available
+     *
+     * @param input user input as String
+     * @return Iterable with error messages. Empty if valid.
+     */
+    private Iterable&lt;String&gt; validate(final String input) {
+<span class="fc bfc" id="L235" title="All 4 branches covered.">        if (optional &amp;&amp; input.isEmpty()) return Lists.newArrayList();</span>
+<span class="fc" id="L236">        return FluentIterable</span>
+<span class="fc" id="L237">                .from(validators)</span>
+<span class="fc" id="L238">                .filter(new Predicate&lt;Validator&gt;() {</span>
+                    @Override
+                    public boolean apply(Validator validator) {
+                        try {
+<span class="fc bfc" id="L242" title="All 2 branches covered.">                            return !validator.valid(input);</span>
+<span class="nc" id="L243">                        } catch (Exception e) {</span>
+<span class="nc" id="L244">                            return true;</span>
+                        }
+                    }
+                })
+<span class="fc" id="L248">                .transform(new Function&lt;Validator, String&gt;() {</span>
+                    @Override
+                    public String apply(Validator input) {
+<span class="fc" id="L251">                        return input.message();</span>
+                    }
+                });
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

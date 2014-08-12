@@ -1,0 +1,1031 @@
+<?xml version="1.0"?>
+<!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
+
+<coverage line-rate="0.7817258883248731" branch-rate="0.75" lines-covered="154" lines-valid="197" branches-covered="36" branches-valid="48" complexity="1.676923076923077" version="2.0.3" timestamp="1407786666290">
+	<sources>
+		<source>/Users/dominik/work/data/console-builder/work/console-builder/src/main/java</source>
+		<source>--source</source>
+	</sources>
+	<packages>
+		<package name="de.eleon.console.builder" line-rate="0.74375" branch-rate="0.7368421052631579" complexity="1.8">
+			<classes>
+				<class name="de.eleon.console.builder.AnswerOptional" filename="de/eleon/console/builder/AnswerOptional.java" line-rate="1.0" branch-rate="1.0" complexity="1.2857142857142858">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Lde/eleon/console/builder/AskBuilder;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="30" hits="28" branch="false"/>
+								<line number="31" hits="28" branch="false"/>
+								<line number="32" hits="28" branch="false"/>
+							</lines>
+						</method>
+						<method name="answer" signature="()Lcom/google/common/base/Optional;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="40" hits="12" branch="false"/>
+							</lines>
+						</method>
+						<method name="answer" signature="(Lcom/google/common/base/Function;)Lcom/google/common/base/Optional;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="51" hits="4" branch="false"/>
+							</lines>
+						</method>
+						<method name="answer" signature="(Lcom/google/common/base/Function;Ljava/lang/String;)Lcom/google/common/base/Optional;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="63" hits="4" branch="false"/>
+							</lines>
+						</method>
+						<method name="answer" signature="(Ljava/lang/Class;)Lcom/google/common/base/Optional;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="74" hits="4" branch="false"/>
+							</lines>
+						</method>
+						<method name="answer" signature="(Ljava/lang/Class;Ljava/lang/String;)Lcom/google/common/base/Optional;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="86" hits="4" branch="false"/>
+							</lines>
+						</method>
+						<method name="optionalOf" signature="(Ljava/lang/String;)Lcom/google/common/base/Optional;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="90" hits="12" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="91" hits="6" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="30" hits="28" branch="false"/>
+						<line number="31" hits="28" branch="false"/>
+						<line number="32" hits="28" branch="false"/>
+						<line number="40" hits="12" branch="false"/>
+						<line number="51" hits="4" branch="false"/>
+						<line number="63" hits="4" branch="false"/>
+						<line number="74" hits="4" branch="false"/>
+						<line number="86" hits="4" branch="false"/>
+						<line number="90" hits="12" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="91" hits="6" branch="false"/>
+					</lines>
+				</class>
+				<class name="de.eleon.console.builder.AskBuilder" filename="de/eleon/console/builder/AskBuilder.java" line-rate="0.9137931034482759" branch-rate="0.9285714285714286" complexity="1.6111111111111112">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Ljava/lang/String;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="41" hits="32" branch="false"/>
+								<line number="42" hits="32" branch="false"/>
+								<line number="43" hits="32" branch="false"/>
+								<line number="44" hits="32" branch="false"/>
+								<line number="50" hits="32" branch="false"/>
+								<line number="51" hits="32" branch="false"/>
+								<line number="52" hits="32" branch="false"/>
+							</lines>
+						</method>
+						<method name="answer" signature="()Ljava/lang/String;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="113" hits="32" branch="false"/>
+							</lines>
+						</method>
+						<method name="answer" signature="(Lcom/google/common/base/Function;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="124" hits="6" branch="false"/>
+							</lines>
+						</method>
+						<method name="answer" signature="(Lcom/google/common/base/Function;Ljava/lang/String;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="136" hits="8" branch="false"/>
+								<line number="137" hits="8" branch="false"/>
+							</lines>
+						</method>
+						<method name="answer" signature="(Ljava/lang/Class;)Ljava/lang/Enum;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="148" hits="6" branch="false"/>
+							</lines>
+						</method>
+						<method name="answer" signature="(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="160" hits="6" branch="false"/>
+								<line number="161" hits="6" branch="false"/>
+								<line number="162" hits="6" branch="false"/>
+							</lines>
+						</method>
+						<method name="ask" signature="(Ljava/lang/String;)Lde/eleon/console/builder/AskBuilder;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="47" hits="32" branch="false"/>
+							</lines>
+						</method>
+						<method name="completeWith" signature="(Ljline/console/completer/Completer;)Lde/eleon/console/builder/AskBuilder;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="72" hits="8" branch="false"/>
+								<line number="73" hits="8" branch="false"/>
+							</lines>
+						</method>
+						<method name="initConsole" signature="()Lde/eleon/console/builder/ConsoleReaderWrapper;" line-rate="0.875" branch-rate="0.5">
+							<lines>
+								<line number="196" hits="32" branch="false"/>
+								<line number="197" hits="32" branch="false"/>
+								<line number="198" hits="32" branch="false"/>
+								<line number="199" hits="32" branch="false"/>
+								<line number="200" hits="32" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="201" hits="0" branch="false"/>
+								<line number="203" hits="32" branch="false"/>
+								<line number="205" hits="32" branch="false"/>
+							</lines>
+						</method>
+						<method name="initConsoleAndGetAnswer" signature="()Ljava/lang/String;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="172" hits="32" branch="false"/>
+								<line number="174" hits="32" branch="false"/>
+								<line number="175" hits="32" branch="false"/>
+								<line number="177" hits="74" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="178" hits="42" branch="false"/>
+								<line number="179" hits="42" branch="false"/>
+								<line number="180" hits="42" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="181" hits="10" branch="false"/>
+								<line number="182" hits="10" branch="false"/>
+								<line number="186" hits="32" branch="false"/>
+								<line number="187" hits="32" branch="false"/>
+							</lines>
+						</method>
+						<method name="optional" signature="()Lde/eleon/console/builder/AnswerOptional;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="103" hits="8" branch="false"/>
+								<line number="104" hits="8" branch="false"/>
+							</lines>
+						</method>
+						<method name="useHistory" signature="()Lde/eleon/console/builder/AskBuilder;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="82" hits="0" branch="false"/>
+								<line number="83" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="useHistoryFrom" signature="(Ljava/lang/String;)Lde/eleon/console/builder/AskBuilder;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="93" hits="0" branch="false"/>
+								<line number="94" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="validate" signature="(Lde/eleon/console/builder/ConsoleReaderWrapper;Ljava/lang/String;)Z" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="216" hits="42" branch="false"/>
+								<line number="217" hits="42" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="218" hits="10" branch="false"/>
+								<line number="219" hits="10" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="220" hits="10" branch="false"/>
+								<line number="221" hits="10" branch="false"/>
+								<line number="222" hits="10" branch="false"/>
+								<line number="224" hits="32" branch="false"/>
+							</lines>
+						</method>
+						<method name="validate" signature="(Ljava/lang/String;)Ljava/lang/Iterable;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="235" hits="42" branch="true" condition-coverage="100% (4/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+										<condition number="1" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="236" hits="38" branch="false"/>
+								<line number="237" hits="38" branch="false"/>
+								<line number="238" hits="38" branch="false"/>
+								<line number="248" hits="38" branch="false"/>
+							</lines>
+						</method>
+						<method name="validateWith" signature="(Lde/eleon/console/builder/functional/Validator;)Lde/eleon/console/builder/AskBuilder;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="61" hits="22" branch="false"/>
+								<line number="62" hits="22" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="41" hits="32" branch="false"/>
+						<line number="42" hits="32" branch="false"/>
+						<line number="43" hits="32" branch="false"/>
+						<line number="44" hits="32" branch="false"/>
+						<line number="47" hits="32" branch="false"/>
+						<line number="50" hits="32" branch="false"/>
+						<line number="51" hits="32" branch="false"/>
+						<line number="52" hits="32" branch="false"/>
+						<line number="61" hits="22" branch="false"/>
+						<line number="62" hits="22" branch="false"/>
+						<line number="72" hits="8" branch="false"/>
+						<line number="73" hits="8" branch="false"/>
+						<line number="82" hits="0" branch="false"/>
+						<line number="83" hits="0" branch="false"/>
+						<line number="93" hits="0" branch="false"/>
+						<line number="94" hits="0" branch="false"/>
+						<line number="103" hits="8" branch="false"/>
+						<line number="104" hits="8" branch="false"/>
+						<line number="113" hits="32" branch="false"/>
+						<line number="124" hits="6" branch="false"/>
+						<line number="136" hits="8" branch="false"/>
+						<line number="137" hits="8" branch="false"/>
+						<line number="148" hits="6" branch="false"/>
+						<line number="160" hits="6" branch="false"/>
+						<line number="161" hits="6" branch="false"/>
+						<line number="162" hits="6" branch="false"/>
+						<line number="172" hits="32" branch="false"/>
+						<line number="174" hits="32" branch="false"/>
+						<line number="175" hits="32" branch="false"/>
+						<line number="177" hits="74" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="178" hits="42" branch="false"/>
+						<line number="179" hits="42" branch="false"/>
+						<line number="180" hits="42" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="181" hits="10" branch="false"/>
+						<line number="182" hits="10" branch="false"/>
+						<line number="186" hits="32" branch="false"/>
+						<line number="187" hits="32" branch="false"/>
+						<line number="196" hits="32" branch="false"/>
+						<line number="197" hits="32" branch="false"/>
+						<line number="198" hits="32" branch="false"/>
+						<line number="199" hits="32" branch="false"/>
+						<line number="200" hits="32" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="201" hits="0" branch="false"/>
+						<line number="203" hits="32" branch="false"/>
+						<line number="205" hits="32" branch="false"/>
+						<line number="216" hits="42" branch="false"/>
+						<line number="217" hits="42" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="218" hits="10" branch="false"/>
+						<line number="219" hits="10" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="220" hits="10" branch="false"/>
+						<line number="221" hits="10" branch="false"/>
+						<line number="222" hits="10" branch="false"/>
+						<line number="224" hits="32" branch="false"/>
+						<line number="235" hits="42" branch="true" condition-coverage="100% (4/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+								<condition number="1" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="236" hits="38" branch="false"/>
+						<line number="237" hits="38" branch="false"/>
+						<line number="238" hits="38" branch="false"/>
+						<line number="248" hits="38" branch="false"/>
+					</lines>
+				</class>
+				<class name="de.eleon.console.builder.AskBuilder$1" filename="de/eleon/console/builder/AskBuilder.java" line-rate="1.0" branch-rate="1.0" complexity="1.6111111111111112">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Lde/eleon/console/builder/AskBuilder;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+							</lines>
+						</method>
+						<method name="apply" signature="(Lde/eleon/console/builder/functional/Validator;)Ljava/lang/String;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="251" hits="10" branch="false"/>
+							</lines>
+						</method>
+						<method name="apply" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="248" hits="48" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="248" hits="48" branch="false"/>
+						<line number="251" hits="10" branch="false"/>
+					</lines>
+				</class>
+				<class name="de.eleon.console.builder.AskBuilder$2" filename="de/eleon/console/builder/AskBuilder.java" line-rate="0.5" branch-rate="1.0" complexity="1.6111111111111112">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Lde/eleon/console/builder/AskBuilder;Ljava/lang/String;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+							</lines>
+						</method>
+						<method name="apply" signature="(Lde/eleon/console/builder/functional/Validator;)Z" line-rate="0.3333333333333333" branch-rate="1.0">
+							<lines>
+								<line number="242" hits="40" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="243" hits="0" branch="false"/>
+								<line number="244" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="apply" signature="(Ljava/lang/Object;)Z" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="238" hits="78" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="238" hits="78" branch="false"/>
+						<line number="242" hits="40" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="243" hits="0" branch="false"/>
+						<line number="244" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="de.eleon.console.builder.ConsoleBuilder" filename="de/eleon/console/builder/ConsoleBuilder.java" line-rate="0.9166666666666666" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="23" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="ask" signature="(Ljava/lang/String;)Lde/eleon/console/builder/AskBuilder;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="32" hits="2" branch="false"/>
+							</lines>
+						</method>
+						<method name="newline" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="65" hits="2" branch="false"/>
+								<line number="66" hits="2" branch="false"/>
+							</lines>
+						</method>
+						<method name="print" signature="(Lde/eleon/console/builder/functional/Applyable;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="74" hits="6" branch="false"/>
+								<line number="75" hits="6" branch="false"/>
+								<line number="76" hits="6" branch="false"/>
+								<line number="77" hits="6" branch="false"/>
+							</lines>
+						</method>
+						<method name="print" signature="(Ljava/lang/CharSequence;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="41" hits="4" branch="false"/>
+								<line number="46" hits="4" branch="false"/>
+							</lines>
+						</method>
+						<method name="print" signature="(Ljava/util/Collection;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="54" hits="2" branch="false"/>
+								<line number="59" hits="2" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="23" hits="0" branch="false"/>
+						<line number="32" hits="2" branch="false"/>
+						<line number="41" hits="4" branch="false"/>
+						<line number="46" hits="4" branch="false"/>
+						<line number="54" hits="2" branch="false"/>
+						<line number="59" hits="2" branch="false"/>
+						<line number="65" hits="2" branch="false"/>
+						<line number="66" hits="2" branch="false"/>
+						<line number="74" hits="6" branch="false"/>
+						<line number="75" hits="6" branch="false"/>
+						<line number="76" hits="6" branch="false"/>
+						<line number="77" hits="6" branch="false"/>
+					</lines>
+				</class>
+				<class name="de.eleon.console.builder.ConsoleBuilder$1" filename="de/eleon/console/builder/ConsoleBuilder.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Ljava/lang/CharSequence;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+							</lines>
+						</method>
+						<method name="apply" signature="(Lde/eleon/console/builder/ConsoleReaderWrapper;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="43" hits="4" branch="false"/>
+								<line number="44" hits="4" branch="false"/>
+							</lines>
+						</method>
+						<method name="apply" signature="(Ljava/lang/Object;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="41" hits="8" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="41" hits="8" branch="false"/>
+						<line number="43" hits="4" branch="false"/>
+						<line number="44" hits="4" branch="false"/>
+					</lines>
+				</class>
+				<class name="de.eleon.console.builder.ConsoleBuilder$2" filename="de/eleon/console/builder/ConsoleBuilder.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Ljava/util/Collection;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+							</lines>
+						</method>
+						<method name="apply" signature="(Lde/eleon/console/builder/ConsoleReaderWrapper;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="56" hits="2" branch="false"/>
+								<line number="57" hits="2" branch="false"/>
+							</lines>
+						</method>
+						<method name="apply" signature="(Ljava/lang/Object;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="54" hits="4" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="54" hits="4" branch="false"/>
+						<line number="56" hits="2" branch="false"/>
+						<line number="57" hits="2" branch="false"/>
+					</lines>
+				</class>
+				<class name="de.eleon.console.builder.ConsoleReaderFactory" filename="de/eleon/console/builder/ConsoleReaderFactory.java" line-rate="0.5" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="7" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="get" signature="()Ljline/console/ConsoleReader;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="10" hits="48" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="7" hits="0" branch="false"/>
+						<line number="10" hits="48" branch="false"/>
+					</lines>
+				</class>
+				<class name="de.eleon.console.builder.ConsoleReaderWrapper" filename="de/eleon/console/builder/ConsoleReaderWrapper.java" line-rate="0.5151515151515151" branch-rate="0.55" complexity="2.9166666666666665">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.7142857142857143" branch-rate="1.0">
+							<lines>
+								<line number="40" hits="48" branch="false"/>
+								<line number="42" hits="48" branch="false"/>
+								<line number="43" hits="0" branch="false"/>
+								<line number="44" hits="0" branch="false"/>
+								<line number="45" hits="48" branch="false"/>
+								<line number="46" hits="48" branch="false"/>
+								<line number="47" hits="48" branch="false"/>
+							</lines>
+						</method>
+						<method name="beep" signature="()V" line-rate="0.6" branch-rate="1.0">
+							<lines>
+								<line number="167" hits="12" branch="false"/>
+								<line number="168" hits="0" branch="false"/>
+								<line number="169" hits="0" branch="false"/>
+								<line number="170" hits="12" branch="false"/>
+								<line number="171" hits="12" branch="false"/>
+							</lines>
+						</method>
+						<method name="close" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="175" hits="48" branch="false"/>
+								<line number="176" hits="48" branch="false"/>
+							</lines>
+						</method>
+						<method name="disableHistory" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="72" hits="32" branch="false"/>
+								<line number="73" hits="32" branch="false"/>
+								<line number="74" hits="32" branch="false"/>
+							</lines>
+						</method>
+						<method name="enableHistoryFrom" signature="(Ljava/lang/String;)V" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="55" hits="0" branch="false"/>
+								<line number="56" hits="0" branch="false"/>
+								<line number="57" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="58" hits="0" branch="false"/>
+								<line number="60" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="61" hits="0" branch="false"/>
+								<line number="63" hits="0" branch="false"/>
+								<line number="64" hits="0" branch="false"/>
+								<line number="65" hits="0" branch="false"/>
+								<line number="66" hits="0" branch="false"/>
+								<line number="67" hits="0" branch="false"/>
+								<line number="68" hits="0" branch="false"/>
+								<line number="69" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getConsoleReader" signature="()Ljline/console/ConsoleReader;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="82" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getInput" signature="()Ljava/lang/String;" line-rate="0.5555555555555556" branch-rate="0.7">
+							<lines>
+								<line number="147" hits="44" branch="false"/>
+								<line number="148" hits="44" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="149" hits="42" branch="false"/>
+								<line number="151" hits="44" branch="true" condition-coverage="62% (5/8)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+										<condition number="1" type="jump" coverage="100%"/>
+										<condition number="2" type="jump" coverage="50%"/>
+										<condition number="3" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="152" hits="0" branch="false"/>
+								<line number="153" hits="0" branch="false"/>
+								<line number="155" hits="44" branch="false"/>
+								<line number="156" hits="0" branch="false"/>
+								<line number="157" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="init" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="50" hits="48" branch="false"/>
+								<line number="51" hits="48" branch="false"/>
+							</lines>
+						</method>
+						<method name="print" signature="(Ljava/lang/CharSequence;)V" line-rate="0.6666666666666666" branch-rate="1.0">
+							<lines>
+								<line number="101" hits="100" branch="false"/>
+								<line number="102" hits="100" branch="false"/>
+								<line number="103" hits="0" branch="false"/>
+								<line number="104" hits="0" branch="false"/>
+								<line number="105" hits="100" branch="false"/>
+								<line number="106" hits="100" branch="false"/>
+							</lines>
+						</method>
+						<method name="print" signature="(Ljava/util/Collection;)V" line-rate="0.6666666666666666" branch-rate="1.0">
+							<lines>
+								<line number="115" hits="4" branch="false"/>
+								<line number="116" hits="4" branch="false"/>
+								<line number="117" hits="0" branch="false"/>
+								<line number="118" hits="0" branch="false"/>
+								<line number="119" hits="4" branch="false"/>
+								<line number="120" hits="4" branch="false"/>
+							</lines>
+						</method>
+						<method name="setCompleters" signature="(Ljava/util/List;)V" line-rate="0.6" branch-rate="0.6666666666666666">
+							<lines>
+								<line number="128" hits="34" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="129" hits="0" branch="false"/>
+								<line number="130" hits="0" branch="false"/>
+								<line number="131" hits="34" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="132" hits="0" branch="false"/>
+								<line number="133" hits="0" branch="false"/>
+								<line number="135" hits="34" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="136" hits="10" branch="false"/>
+								<line number="137" hits="10" branch="false"/>
+								<line number="138" hits="34" branch="false"/>
+							</lines>
+						</method>
+						<method name="setConsoleReader" signature="(Ljline/console/ConsoleReader;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="91" hits="0" branch="false"/>
+								<line number="92" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="40" hits="48" branch="false"/>
+						<line number="42" hits="48" branch="false"/>
+						<line number="43" hits="0" branch="false"/>
+						<line number="44" hits="0" branch="false"/>
+						<line number="45" hits="48" branch="false"/>
+						<line number="46" hits="48" branch="false"/>
+						<line number="47" hits="48" branch="false"/>
+						<line number="50" hits="48" branch="false"/>
+						<line number="51" hits="48" branch="false"/>
+						<line number="55" hits="0" branch="false"/>
+						<line number="56" hits="0" branch="false"/>
+						<line number="57" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="58" hits="0" branch="false"/>
+						<line number="60" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="61" hits="0" branch="false"/>
+						<line number="63" hits="0" branch="false"/>
+						<line number="64" hits="0" branch="false"/>
+						<line number="65" hits="0" branch="false"/>
+						<line number="66" hits="0" branch="false"/>
+						<line number="67" hits="0" branch="false"/>
+						<line number="68" hits="0" branch="false"/>
+						<line number="69" hits="0" branch="false"/>
+						<line number="72" hits="32" branch="false"/>
+						<line number="73" hits="32" branch="false"/>
+						<line number="74" hits="32" branch="false"/>
+						<line number="82" hits="0" branch="false"/>
+						<line number="91" hits="0" branch="false"/>
+						<line number="92" hits="0" branch="false"/>
+						<line number="101" hits="100" branch="false"/>
+						<line number="102" hits="100" branch="false"/>
+						<line number="103" hits="0" branch="false"/>
+						<line number="104" hits="0" branch="false"/>
+						<line number="105" hits="100" branch="false"/>
+						<line number="106" hits="100" branch="false"/>
+						<line number="115" hits="4" branch="false"/>
+						<line number="116" hits="4" branch="false"/>
+						<line number="117" hits="0" branch="false"/>
+						<line number="118" hits="0" branch="false"/>
+						<line number="119" hits="4" branch="false"/>
+						<line number="120" hits="4" branch="false"/>
+						<line number="128" hits="34" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="129" hits="0" branch="false"/>
+						<line number="130" hits="0" branch="false"/>
+						<line number="131" hits="34" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="132" hits="0" branch="false"/>
+						<line number="133" hits="0" branch="false"/>
+						<line number="135" hits="34" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="136" hits="10" branch="false"/>
+						<line number="137" hits="10" branch="false"/>
+						<line number="138" hits="34" branch="false"/>
+						<line number="147" hits="44" branch="false"/>
+						<line number="148" hits="44" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="149" hits="42" branch="false"/>
+						<line number="151" hits="44" branch="true" condition-coverage="62% (5/8)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+								<condition number="1" type="jump" coverage="100%"/>
+								<condition number="2" type="jump" coverage="50%"/>
+								<condition number="3" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="152" hits="0" branch="false"/>
+						<line number="153" hits="0" branch="false"/>
+						<line number="155" hits="44" branch="false"/>
+						<line number="156" hits="0" branch="false"/>
+						<line number="157" hits="0" branch="false"/>
+						<line number="167" hits="12" branch="false"/>
+						<line number="168" hits="0" branch="false"/>
+						<line number="169" hits="0" branch="false"/>
+						<line number="170" hits="12" branch="false"/>
+						<line number="171" hits="12" branch="false"/>
+						<line number="175" hits="48" branch="false"/>
+						<line number="176" hits="48" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="de.eleon.console.builder.functional" line-rate="0.9459459459459459" branch-rate="0.8" complexity="1.4">
+			<classes>
+				<class name="de.eleon.console.builder.functional.Applyable" filename="de/eleon/console/builder/functional/Applyable.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="de.eleon.console.builder.functional.Transformer" filename="de/eleon/console/builder/functional/Transformer.java" line-rate="1.0" branch-rate="1.0" complexity="0.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="de.eleon.console.builder.functional.Transformers" filename="de/eleon/console/builder/functional/Transformers.java" line-rate="0.6666666666666666" branch-rate="1.0" complexity="1.4">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="25" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="toEnum" signature="(Ljava/lang/Class;)Lde/eleon/console/builder/functional/Transformer;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="28" hits="24" branch="false"/>
+							</lines>
+						</method>
+						<method name="toInteger" signature="()Lde/eleon/console/builder/functional/Transformer;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="47" hits="26" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="25" hits="0" branch="false"/>
+						<line number="28" hits="24" branch="false"/>
+						<line number="47" hits="26" branch="false"/>
+					</lines>
+				</class>
+				<class name="de.eleon.console.builder.functional.Transformers$1" filename="de/eleon/console/builder/functional/Transformers.java" line-rate="1.0" branch-rate="1.0" complexity="1.4">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Ljava/lang/Class;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+							</lines>
+						</method>
+						<method name="apply" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="28" hits="48" branch="false"/>
+							</lines>
+						</method>
+						<method name="apply" signature="(Ljava/lang/String;)Ljava/lang/Enum;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="31" hits="24" branch="false"/>
+								<line number="32" hits="24" branch="false"/>
+								<line number="33" hits="24" branch="false"/>
+								<line number="40" hits="24" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="41" hits="16" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="28" hits="48" branch="false"/>
+						<line number="31" hits="24" branch="false"/>
+						<line number="32" hits="24" branch="false"/>
+						<line number="33" hits="24" branch="false"/>
+						<line number="40" hits="24" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="41" hits="16" branch="false"/>
+					</lines>
+				</class>
+				<class name="de.eleon.console.builder.functional.Transformers$1$1" filename="de/eleon/console/builder/functional/Transformers.java" line-rate="1.0" branch-rate="1.0" complexity="1.4">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Lde/eleon/console/builder/functional/Transformers$1;Ljava/lang/String;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+							</lines>
+						</method>
+						<method name="apply" signature="(Ljava/lang/Enum;)Z" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="36" hits="36" branch="false"/>
+								<line number="37" hits="36" branch="false"/>
+							</lines>
+						</method>
+						<method name="apply" signature="(Ljava/lang/Object;)Z" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="33" hits="60" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="33" hits="60" branch="false"/>
+						<line number="36" hits="36" branch="false"/>
+						<line number="37" hits="36" branch="false"/>
+					</lines>
+				</class>
+				<class name="de.eleon.console.builder.functional.Transformers$2" filename="de/eleon/console/builder/functional/Transformers.java" line-rate="1.0" branch-rate="1.0" complexity="1.4">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+							</lines>
+						</method>
+						<method name="apply" signature="(Ljava/lang/Object;)Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="47" hits="58" branch="false"/>
+							</lines>
+						</method>
+						<method name="apply" signature="(Ljava/lang/String;)Ljava/lang/Integer;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="50" hits="32" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="47" hits="58" branch="false"/>
+						<line number="50" hits="32" branch="false"/>
+					</lines>
+				</class>
+				<class name="de.eleon.console.builder.functional.Validator" filename="de/eleon/console/builder/functional/Validator.java" line-rate="1.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+					</methods>
+					<lines>
+					</lines>
+				</class>
+				<class name="de.eleon.console.builder.functional.Validators" filename="de/eleon/console/builder/functional/Validators.java" line-rate="0.8" branch-rate="1.0" complexity="1.5">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="20" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="enumValidator" signature="(Ljava/lang/Class;Ljava/lang/String;)Lde/eleon/console/builder/functional/Validator;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="51" hits="12" branch="false"/>
+							</lines>
+						</method>
+						<method name="functionValidator" signature="(Lcom/google/common/base/Function;Ljava/lang/String;)Lde/eleon/console/builder/functional/Validator;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="70" hits="14" branch="false"/>
+							</lines>
+						</method>
+						<method name="notEmpty" signature="(Ljava/lang/String;)Lde/eleon/console/builder/functional/Validator;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="23" hits="10" branch="false"/>
+							</lines>
+						</method>
+						<method name="regex" signature="(Ljava/lang/String;Ljava/lang/String;)Lde/eleon/console/builder/functional/Validator;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="37" hits="6" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="20" hits="0" branch="false"/>
+						<line number="23" hits="10" branch="false"/>
+						<line number="37" hits="6" branch="false"/>
+						<line number="51" hits="12" branch="false"/>
+						<line number="70" hits="14" branch="false"/>
+					</lines>
+				</class>
+				<class name="de.eleon.console.builder.functional.Validators$1" filename="de/eleon/console/builder/functional/Validators.java" line-rate="1.0" branch-rate="0.75" complexity="1.5">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Ljava/lang/String;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="23" hits="10" branch="false"/>
+							</lines>
+						</method>
+						<method name="message" signature="()Ljava/lang/String;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="31" hits="4" branch="false"/>
+							</lines>
+						</method>
+						<method name="valid" signature="(Ljava/lang/String;)Z" line-rate="1.0" branch-rate="0.75">
+							<lines>
+								<line number="26" hits="12" branch="true" condition-coverage="75% (3/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+										<condition number="1" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="23" hits="10" branch="false"/>
+						<line number="26" hits="12" branch="true" condition-coverage="75% (3/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+								<condition number="1" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="31" hits="4" branch="false"/>
+					</lines>
+				</class>
+				<class name="de.eleon.console.builder.functional.Validators$2" filename="de/eleon/console/builder/functional/Validators.java" line-rate="1.0" branch-rate="0.75" complexity="1.5">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Ljava/lang/String;Ljava/lang/String;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="37" hits="6" branch="false"/>
+							</lines>
+						</method>
+						<method name="message" signature="()Ljava/lang/String;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="45" hits="2" branch="false"/>
+							</lines>
+						</method>
+						<method name="valid" signature="(Ljava/lang/String;)Z" line-rate="1.0" branch-rate="0.75">
+							<lines>
+								<line number="40" hits="4" branch="true" condition-coverage="75% (3/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+										<condition number="1" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="37" hits="6" branch="false"/>
+						<line number="40" hits="4" branch="true" condition-coverage="75% (3/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+								<condition number="1" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="45" hits="2" branch="false"/>
+					</lines>
+				</class>
+				<class name="de.eleon.console.builder.functional.Validators$3" filename="de/eleon/console/builder/functional/Validators.java" line-rate="1.0" branch-rate="1.0" complexity="1.5">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Ljava/lang/Class;Ljava/lang/String;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="51" hits="12" branch="false"/>
+							</lines>
+						</method>
+						<method name="message" signature="()Ljava/lang/String;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="64" hits="4" branch="false"/>
+							</lines>
+						</method>
+						<method name="valid" signature="(Ljava/lang/String;)Z" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="55" hits="14" branch="false"/>
+								<line number="56" hits="8" branch="false"/>
+								<line number="57" hits="6" branch="false"/>
+								<line number="58" hits="6" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="51" hits="12" branch="false"/>
+						<line number="55" hits="14" branch="false"/>
+						<line number="56" hits="8" branch="false"/>
+						<line number="57" hits="6" branch="false"/>
+						<line number="58" hits="6" branch="false"/>
+						<line number="64" hits="4" branch="false"/>
+					</lines>
+				</class>
+				<class name="de.eleon.console.builder.functional.Validators$4" filename="de/eleon/console/builder/functional/Validators.java" line-rate="1.0" branch-rate="1.0" complexity="1.5">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Lcom/google/common/base/Function;Ljava/lang/String;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="70" hits="14" branch="false"/>
+							</lines>
+						</method>
+						<method name="message" signature="()Ljava/lang/String;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="83" hits="6" branch="false"/>
+							</lines>
+						</method>
+						<method name="valid" signature="(Ljava/lang/String;)Z" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="74" hits="20" branch="false"/>
+								<line number="75" hits="10" branch="false"/>
+								<line number="76" hits="10" branch="false"/>
+								<line number="77" hits="10" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="70" hits="14" branch="false"/>
+						<line number="74" hits="20" branch="false"/>
+						<line number="75" hits="10" branch="false"/>
+						<line number="76" hits="10" branch="false"/>
+						<line number="77" hits="10" branch="false"/>
+						<line number="83" hits="6" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+	</packages>
+</coverage>

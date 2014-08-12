@@ -1,0 +1,7 @@
+.idea
+target
+*.iml
+*.releaseBackup
+release.properties
+cobertura.png
+jacoco.png

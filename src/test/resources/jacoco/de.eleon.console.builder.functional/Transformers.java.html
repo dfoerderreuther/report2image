@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Transformers.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">console-builder</a> &gt; <a href="index.source.html" class="el_package">de.eleon.console.builder.functional</a> &gt; <span class="el_source">Transformers.java</span></div><h1>Transformers.java</h1><pre class="source lang-java linenums">/*
+* Copyright 2014 Dominik Foerderreuther &lt;dominik@eleon.de&gt;
+*
+* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+package de.eleon.console.builder.functional;
+
+import com.google.common.base.Optional;
+import com.google.common.base.Predicate;
+import com.google.common.collect.FluentIterable;
+
+import static com.google.common.collect.Lists.newArrayList;
+import static java.lang.String.format;
+
+<span class="nc" id="L25">public class Transformers {</span>
+
+    public static &lt;T extends Enum&lt;T&gt;&gt; Transformer&lt;T&gt; toEnum(final Class&lt;T&gt; enumClass) {
+<span class="fc" id="L28">        return new Transformer&lt;T&gt;() {</span>
+            @Override
+            public T apply(final String userIn) {
+<span class="fc" id="L31">                Optional&lt;T&gt; ret = FluentIterable</span>
+<span class="fc" id="L32">                        .from(newArrayList(enumClass.getEnumConstants()))</span>
+<span class="fc" id="L33">                        .firstMatch(new Predicate&lt;T&gt;() {</span>
+                            @Override
+                            public boolean apply(T enumValue) {
+<span class="fc" id="L36">                                return enumValue.toString()</span>
+<span class="fc" id="L37">                                        .equalsIgnoreCase(userIn);</span>
+                            }
+                        });
+<span class="fc bfc" id="L40" title="All 2 branches covered.">                if (!ret.isPresent()) throw new IllegalArgumentException(format(&quot;could not find value %s in enum %s&quot;, userIn, enumClass.getName()));</span>
+<span class="fc" id="L41">                return ret.get();</span>
+            }
+        };
+    }
+
+    public static  Transformer&lt;Integer&gt; toInteger() {
+<span class="fc" id="L47">        return new Transformer&lt;Integer&gt;() {</span>
+            @Override
+            public Integer apply(final String userIn) {
+<span class="fc" id="L50">                return Integer.parseInt(userIn.trim());</span>
+            }
+        };
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

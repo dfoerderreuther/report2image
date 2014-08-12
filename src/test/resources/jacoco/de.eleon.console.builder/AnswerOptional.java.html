@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>AnswerOptional.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">console-builder</a> &gt; <a href="index.source.html" class="el_package">de.eleon.console.builder</a> &gt; <span class="el_source">AnswerOptional.java</span></div><h1>AnswerOptional.java</h1><pre class="source lang-java linenums">/*
+* Copyright 2014 Dominik Foerderreuther &lt;dominik@eleon.de&gt;
+*
+* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+package de.eleon.console.builder;
+
+import com.google.common.base.Function;
+import com.google.common.base.Optional;
+
+import static com.google.common.base.Optional.fromNullable;
+
+/**
+ * Extend AskBuilder to answer with an Optional.
+ */
+public class AnswerOptional {
+
+    private final AskBuilder askBuilder;
+
+<span class="fc" id="L30">    AnswerOptional(AskBuilder askBuilder) {</span>
+<span class="fc" id="L31">        this.askBuilder = askBuilder;</span>
+<span class="fc" id="L32">    }</span>
+
+    /**
+     * Return user input
+     *
+     * @return user input as Optional&lt;String&gt;
+     */
+    public Optional&lt;String&gt; answer() {
+<span class="fc" id="L40">        return optionalOf(askBuilder.answer());</span>
+    }
+
+    /**
+     * Return user input as Optional&lt;T&gt;
+     *
+     * @param function {@link com.google.common.base.Function} or {@link de.eleon.console.builder.functional.Transformer} for value conversion
+     * @param &lt;T&gt; the return type
+     * @return user input as Optional&lt;T&gt;
+     */
+    public &lt;T&gt; Optional&lt;T&gt; answer(Function&lt;String, T&gt; function) {
+<span class="fc" id="L51">        return fromNullable(askBuilder.answer(function));</span>
+    }
+
+    /**
+     * Return user input as Optional&lt;T&gt;
+     *
+     * @param function {@link Function} or {@link de.eleon.console.builder.functional.Transformer} for value conversion
+     * @param validationErrorMessage error message if function conversion fails
+     * @param &lt;T&gt; the return type
+     * @return user input as Optional&lt;T&gt;
+     */
+    public &lt;T&gt; Optional&lt;T&gt; answer(Function&lt;String, T&gt; function, final String validationErrorMessage) {
+<span class="fc" id="L63">        return fromNullable(askBuilder.answer(function, validationErrorMessage));</span>
+    }
+
+    /**
+     * Return user input as Optional&lt;T extends Enum&lt;T&gt;&gt;. Complete with enum values.
+     *
+     * @param enumClass Class of enum to return
+     * @param &lt;T&gt; the return type
+     * @return user input as enum value
+     */
+    public &lt;T extends Enum&lt;T&gt;&gt; Optional&lt;T&gt; answer(final Class&lt;T&gt; enumClass) {
+<span class="fc" id="L74">        return fromNullable(askBuilder.answer(enumClass));</span>
+    }
+
+    /**
+     * Return user input as Optional&lt;T extends Enum&lt;T&gt;&gt;. Complete with enum values.
+     *
+     * @param enumClass Class of enum to return
+     * @param validationErrorMessage error message if enum conversion fails
+     * @param &lt;T&gt; the return type
+     * @return user input as enum value
+     */
+    public &lt;T extends Enum&lt;T&gt;&gt; Optional&lt;T&gt; answer(final Class&lt;T&gt; enumClass, final String validationErrorMessage) {
+<span class="fc" id="L86">        return fromNullable(askBuilder.answer(enumClass, validationErrorMessage));</span>
+    }
+
+    private Optional&lt;String&gt; optionalOf(String answer) {
+<span class="fc bfc" id="L90" title="All 2 branches covered.">        if (answer.trim().isEmpty()) return Optional.absent();</span>
+<span class="fc" id="L91">        return Optional.of(answer);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

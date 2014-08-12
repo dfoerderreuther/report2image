@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ConsoleBuilder.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">console-builder</a> &gt; <a href="index.source.html" class="el_package">de.eleon.console.builder</a> &gt; <span class="el_source">ConsoleBuilder.java</span></div><h1>ConsoleBuilder.java</h1><pre class="source lang-java linenums">
+package de.eleon.console.builder;
+
+import de.eleon.console.builder.functional.Applyable;
+
+import java.util.Collection;
+
+/**
+ * Use the ConsoleBuilder to build console dialogs or simply to print something on the terminal.
+ *
+ * Example:
+ *
+ *    String answer = ConsoleBuilder.ask(&quot;What is your Name?&quot;).answer();
+ *    System.out.print(&quot;Answer: &quot; + answer);
+ *
+ * The result in the terminal will looks like
+ *
+ *    What is your Name?
+ *    &gt; Dominik|
+ *    Answer: Dominik
+ *
+ */
+<span class="nc" id="L23">public class ConsoleBuilder {</span>
+
+    /**
+     * Start new AskBuilder to build a user dialog within the terminal
+     *
+     * @param question The question to ask
+     * @return the builder instance
+     */
+    public static AskBuilder ask(String question) {
+<span class="fc" id="L32">        return AskBuilder.ask(question);</span>
+    }
+
+    /**
+     * Print line to console
+     *
+     * @param line CharSequence to print
+     */
+    public static void print(final CharSequence line) {
+<span class="fc" id="L41">        print(new Applyable&lt;ConsoleReaderWrapper&gt;() {</span>
+            public void apply(ConsoleReaderWrapper consoleReaderWrapper) {
+<span class="fc" id="L43">                consoleReaderWrapper.print(line);</span>
+<span class="fc" id="L44">            }</span>
+        });
+<span class="fc" id="L46">    }</span>
+
+    /**
+     * Print columns to console
+     *
+     * @param columns Collections of CharSequences to print
+     */
+    public static void print(final Collection&lt;? extends CharSequence&gt; columns) {
+<span class="fc" id="L54">        print(new Applyable&lt;ConsoleReaderWrapper&gt;() {</span>
+            public void apply(ConsoleReaderWrapper consoleReaderWrapper) {
+<span class="fc" id="L56">                consoleReaderWrapper.print(columns);</span>
+<span class="fc" id="L57">            }</span>
+        });
+<span class="fc" id="L59">    }</span>
+
+    /**
+     * Print empty line
+     */
+    public static void newline() {
+<span class="fc" id="L65">        print(&quot;&quot;);</span>
+<span class="fc" id="L66">    }</span>
+
+    /**
+     * print applyable
+     *
+     * @param applyable Applyable with print method
+     */
+    private static void print(Applyable&lt;ConsoleReaderWrapper&gt; applyable) {
+<span class="fc" id="L74">        ConsoleReaderWrapper consoleReaderWrapper = new ConsoleReaderWrapper();</span>
+<span class="fc" id="L75">        applyable.apply(consoleReaderWrapper);</span>
+<span class="fc" id="L76">        consoleReaderWrapper.close();</span>
+<span class="fc" id="L77">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
