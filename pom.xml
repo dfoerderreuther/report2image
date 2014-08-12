@@ -137,7 +137,7 @@
                     <plugin>
                         <groupId>de.eleon</groupId>
                         <artifactId>report2image</artifactId>
-                        <version>1.1-SNAPSHOT</version>
+                        <version>${project.version}</version>
                         <executions>
                             <execution>
                                 <phase>package</phase>
@@ -153,6 +153,7 @@
                                     <image>target/jacoco.png</image>
                                 </report>
                             </reports>
+                            <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
                         </configuration>
                     </plugin>
                 </plugins>
