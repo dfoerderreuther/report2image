@@ -21,6 +21,9 @@ public class Report2Image extends AbstractMojo {
     @Parameter(required = true)
     protected Map<String, String>[] reports;
 
+    @Parameter(required = false)
+    protected boolean hideTag = false;
+
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
         renderReports();
@@ -40,6 +43,7 @@ public class Report2Image extends AbstractMojo {
         try {
             Renderer renderer = new Renderer(html);
             renderer.setWidth(width);
+            if (hideTag) renderer.setTag(false);
             renderer.render(image);
         } catch (IOException e) {
             getLog().error("can't create image", e);

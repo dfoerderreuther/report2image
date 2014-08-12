@@ -23,6 +23,7 @@ public class RendererTest {
         new File("jacoco.png").delete();
         Renderer renderer = new Renderer("src/test/resources/jacoco/index.html");
         renderer.setWidth(750);
+        renderer.setTag(false);
         renderer.render("jacoco.png");
 
         assertTrue(new File("jacoco.png").exists());

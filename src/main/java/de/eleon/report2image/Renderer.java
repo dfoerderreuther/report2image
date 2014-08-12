@@ -11,8 +11,11 @@ import java.io.IOException;
 
 public class Renderer {
 
+    private final static String TAG = "converted with report2image http://git.io/r2i";
+
     private String resource;
     private int width = 800;
+    private boolean tag = true;
 
     public Renderer(String resource) {
         this.resource = resource;
@@ -20,6 +23,10 @@ public class Renderer {
 
     public void setWidth(int width) {
         this.width = width;
+    }
+
+    public void setTag(boolean tag) {
+        this.tag = tag;
     }
 
     public void render(String file) throws IOException {
@@ -30,9 +37,32 @@ public class Renderer {
                 .put(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HRGB)
                 .build());
 
-        BufferedImage buffImg = renderer.getImage();
+        BufferedImage bufferedImage = renderer.getImage();
 
-        ImageIO.write(buffImg, "png", new File(file));
+        if (tag) {
+            bufferedImage = applyTag(bufferedImage);
+        }
+
+        ImageIO.write(bufferedImage, "png", new File(file));
+    }
+
+    private BufferedImage applyTag(BufferedImage bufferedImage) {
+        BufferedImage resizedImage = new BufferedImage(bufferedImage.getWidth(), bufferedImage.getHeight() + 15, bufferedImage.getType());
+
+        int height = resizedImage.getHeight();
+        int width = resizedImage.getWidth();
+
+        Graphics graphics = resizedImage.getGraphics();
+        graphics.setColor(Color.DARK_GRAY);
+        graphics.fillRect(0, 0, width, height);
+
+        graphics.drawImage(bufferedImage, 0, 0, null);
+
+        graphics.setColor(Color.WHITE);
+        graphics.setFont(new Font("Arial", Font.PLAIN, 12));
+        graphics.drawString(TAG, 3, height - 3);
+
+        return resizedImage;
     }
 
 
