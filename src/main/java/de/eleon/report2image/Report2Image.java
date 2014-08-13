@@ -30,7 +30,7 @@ public class Report2Image extends AbstractMojo {
     public static final String HTML = "html";
     public static final String IMAGE = "image";
     public static final String WIDTH = "width";
-    public static final String DEFAULT_WIDTH = "800";
+    public static final int DEFAULT_WIDTH = 800;
 
     @Parameter(required = true)
     protected Map<String, String>[] reports;
@@ -47,7 +47,10 @@ public class Report2Image extends AbstractMojo {
         for (Map<String, String> report : reports) {
             String html = report.get(HTML);
             String image = report.get(IMAGE);
-            int width = Integer.parseInt(report.getOrDefault(WIDTH, DEFAULT_WIDTH));
+            int width = DEFAULT_WIDTH;
+            if (report.containsKey(WIDTH)) {
+                width = Integer.parseInt(report.get(WIDTH));
+            }
             renderReport(html, image, width);
         }
     }
