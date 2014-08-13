@@ -110,7 +110,7 @@
             </build>
         </profile>
 
-        <profile>
+        <!--<profile>
             <id>test</id>
             <build>
                 <plugins>
@@ -157,7 +157,7 @@
                     </plugin>
                 </plugins>
             </build>
-        </profile>
+        </profile>-->
 
     </profiles>
 
